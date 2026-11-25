@@ -94,10 +94,14 @@ export default function Hero() {
               Explore My Work
             </a>
             <a
-              href="#about-section"
-              className="inline-flex min-h-12 items-center justify-center rounded-full border border-white/30 px-6 text-[10px] font-bold uppercase tracking-[0.17em] text-white transition-colors duration-300 hover:border-[#F26B38] hover:text-[#F26B38] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#F26B38] sm:px-7 sm:text-xs"
+              href="/Kumar_S_Creative_Producer-Resume.pdf"
+              download="Kumar_S_Resume.pdf"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-[#F26B38]/60 px-6 text-[10px] font-bold uppercase tracking-[0.17em] text-[#F26B38] transition-colors duration-300 hover:bg-[#F26B38] hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#F26B38] sm:px-7 sm:text-xs"
             >
-              About Me
+              Download Resume
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M12 3v12m-5-5 5 5 5-5M5 21h14" />
+              </svg>
             </a>
           </div>
         </div>
