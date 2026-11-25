@@ -94,14 +94,24 @@ export default function About({ standalone = false }) {
             />
           ))}
 
-          <div className={`about-p mt-6 ${standalone ? "flex justify-end" : "flex justify-start"}`}>
+          <div className={`about-p mt-6 flex flex-wrap items-center gap-3 ${standalone ? "justify-end" : "justify-start"}`}>
             <a
               href="/contact"
-              className="inline-flex items-center gap-2 px-6 py-3 border border-[#F26B38]/30 text-[#F26B38] text-xs font-bold uppercase tracking-widest rounded-full hover:bg-[#F26B38] hover:text-black transition-colors duration-300"
+              className="inline-flex items-center gap-2 rounded-full border border-[#F26B38]/30 px-6 py-3 text-xs font-bold uppercase tracking-widest text-[#F26B38] transition-colors duration-300 hover:bg-[#F26B38] hover:text-black"
             >
               Start a conversation
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+            <a
+              href="/Kumar_S_Creative_Producer-Resume.pdf"
+              download="Kumar_S_Resume.pdf"
+              className="inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-3 text-xs font-bold uppercase tracking-widest text-white/75 transition-colors duration-300 hover:border-[#F26B38] hover:text-[#F26B38] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#F26B38]"
+            >
+              Download Resume
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M12 3v12m-5-5 5 5 5-5M5 21h14"/>
               </svg>
             </a>
           </div>

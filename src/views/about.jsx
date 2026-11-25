@@ -52,6 +52,17 @@ export default function AboutPage() {
             {BIO.map((text) => <p className="about-bio" key={text}><RichText text={text} /></p>)}
           </div>
 
+          <a
+            href="/Kumar_S_Creative_Producer-Resume.pdf"
+            download="Kumar_S_Resume.pdf"
+            className="mb-10 inline-flex items-center gap-2 rounded-full border border-[#F26B38]/40 px-6 py-3 text-xs font-bold uppercase tracking-widest text-[#F26B38] transition-colors hover:bg-[#F26B38] hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#F26B38]"
+          >
+            Download Resume
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M12 3v12m-5-5 5 5 5-5M5 21h14" />
+            </svg>
+          </a>
+
           <div className="grid gap-8 border-t border-white/10 pt-7 sm:grid-cols-2">
             <div>
               <h2 className="mb-4 text-[10px] uppercase tracking-[0.35em] text-white/45">Creative direction</h2>
