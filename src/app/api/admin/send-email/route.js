@@ -4,8 +4,6 @@ import { jwtVerify } from 'jose';
 import { Resend } from 'resend';
 import { supabase } from '@/lib/supabase';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 async function isAdmin() {
   const store = await cookies();
   const token = store.get('admin_token')?.value;
@@ -23,6 +21,12 @@ export async function POST(request) {
   if (!(await isAdmin())) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
+
+  if (!process.env.RESEND_API_KEY) {
+    return NextResponse.json({ error: 'Email delivery is not configured' }, { status: 503 });
+  }
+
+  const resend = new Resend(process.env.RESEND_API_KEY);
 
   try {
     const formData = await request.formData();

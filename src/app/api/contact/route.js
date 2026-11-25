@@ -2,7 +2,6 @@ import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { supabase } from '@/lib/supabase';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
 const DAILY_LIMIT = 3;
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -25,6 +24,11 @@ function escapeHtml(value) {
 }
 
 export async function POST(request) {
+  if (!process.env.RESEND_API_KEY) {
+    return NextResponse.json({ error: 'Email delivery is not configured' }, { status: 503 });
+  }
+
+  const resend = new Resend(process.env.RESEND_API_KEY);
   let body;
   try {
     body = await request.json();
