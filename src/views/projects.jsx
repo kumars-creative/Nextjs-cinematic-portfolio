@@ -21,6 +21,18 @@ function safeUrl(url) {
 
 const NOISE_SVG = `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`;
 
+const PLACEHOLDER_WORKS = [
+  { image: "/portfolio-placeholders/video-editing.png", text: "Video Editing · Study 01", category: "Video Editing" },
+  { image: "/portfolio-placeholders/motion-graphics.png", text: "Motion Graphics · Study 02", category: "Motion Graphics" },
+  { image: "/portfolio-placeholders/ai-filmmaking.png", text: "AI Filmmaking · Study 03", category: "AI Filmmaking" },
+  { image: "/portfolio-placeholders/blender-3d.png", text: "Blender 3D · Study 04", category: "Blender 3D" },
+  { image: "/portfolio-placeholders/social-media.png", text: "Social Media · Study 05", category: "Social Media" },
+].map((work) => ({
+  ...work,
+  description: "Temporary visual placeholder. Replace this artwork and description with an original project when ready.",
+  tech: work.category,
+}));
+
 /* ─── Magnetic CTA ─── */
 function MagneticCTA({ href, children }) {
   const ref = useRef(null);
@@ -31,7 +43,7 @@ function MagneticCTA({ href, children }) {
         ref.current.style.transform = `translate(${(e.clientX - b.left - b.width / 2) * 0.25}px,${(e.clientY - b.top - b.height / 2) * 0.25}px)`;
       }}
       onMouseLeave={() => { ref.current.style.transform = "translate(0,0)"; }}
-      className="inline-flex items-center gap-3 px-7 py-3.5 bg-[#ff6b1a] text-black font-black rounded-xl text-[10px] uppercase tracking-[0.25em] hover:bg-[#ff8c42] will-change-transform"
+      className="inline-flex items-center gap-3 px-7 py-3.5 bg-[#F26B38] text-black font-black rounded-xl text-[10px] uppercase tracking-[0.25em] hover:bg-[#F47D4F] will-change-transform"
       style={{ transition: "transform 0.2s cubic-bezier(.23,1,.32,1), background-color 0.3s" }}
     >
       {children}
@@ -135,13 +147,13 @@ function ProjectShowcase({ items, startIdx, onClose }) {
 
             <motion.div className="flex items-center gap-3 mb-8"
               initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 }}>
-              <span className="text-[#ff6b1a] font-mono text-xs font-black tracking-[0.3em]">{String(idx + 1).padStart(2, "0")}</span>
+              <span className="text-[#F26B38] font-mono text-xs font-black tracking-[0.3em]">{String(idx + 1).padStart(2, "0")}</span>
               <div className="w-10 h-px bg-white/10" />
               <span className="text-white/20 font-mono text-xs tracking-[0.3em]">{String(items.length).padStart(2, "0")}</span>
             </motion.div>
 
             <motion.span className="inline-block self-start px-3.5 py-1 rounded-full text-[8px] font-black uppercase tracking-[0.4em] mb-5 border"
-              style={{ background: "rgba(255,107,26,0.08)", borderColor: "rgba(255,107,26,0.15)", color: "#ff6b1a" }}
+              style={{ background: "rgba(242,107,56,0.08)", borderColor: "rgba(242,107,56,0.15)", color: "#F26B38" }}
               initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35 }}>
               {current.category}
             </motion.span>
@@ -202,7 +214,7 @@ function ProjectShowcase({ items, startIdx, onClose }) {
           {items.map((_, i) => (
             <button key={i} onClick={() => go(i)} title={items[i]?.text} className="flex items-center justify-center">
               <motion.div className="rounded-full"
-                animate={{ width: i === idx ? 6 : 4, height: i === idx ? 18 : 4, backgroundColor: i === idx ? "#ff6b1a" : "rgba(255,255,255,0.12)" }}
+                animate={{ width: i === idx ? 6 : 4, height: i === idx ? 18 : 4, backgroundColor: i === idx ? "#F26B38" : "rgba(255,255,255,0.12)" }}
                 transition={{ duration: 0.35, ease: [0.76, 0, 0.24, 1] }} />
             </button>
           ))}
@@ -240,15 +252,17 @@ export default function ProjectsPage() {
   const [items, setItems] = useState(null);
   const [allFull, setAllFull] = useState(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [showShowcase, setShowShowcase] = useState(false);
 
   const catParam = searchParams.get("cat");
-  // Normalize mapping: "website" -> "WEBSITE", "design" -> "DESIGNS", "video" -> "VIDEOS"
   const getInitialCategory = () => {
     if (!catParam) return "ALL";
     const c = catParam.toLowerCase();
-    if (c.includes("web") || c.includes("site")) return "WEBSITE";
-    if (c.includes("design") || c.includes("poster") || c.includes("photo") || c.includes("pic")) return "DESIGNS";
-    if (c.includes("video") || c.includes("motion") || c.includes("film") || c.includes("edit")) return "VIDEOS";
+    if (c.includes("blender") || c.includes("3d")) return "BLENDER 3D";
+    if (c.includes("social")) return "SOCIAL MEDIA";
+    if (c.includes("ai")) return "AI FILMMAKING";
+    if (c.includes("motion")) return "MOTION GRAPHICS";
+    if (c.includes("video") || c.includes("film") || c.includes("edit")) return "VIDEO EDITING";
     return "ALL";
   };
   
@@ -261,15 +275,17 @@ export default function ProjectsPage() {
         if (data && data.length > 0) {
           const normalizeCategory = (cat) => {
             const c = (cat || "").toLowerCase();
-            if (c.includes("web") || c.includes("site")) return "Website";
-            if (c.includes("design") || c.includes("poster") || c.includes("ui") || c.includes("graphic")) return "Designs";
-            if (c.includes("photo") || c.includes("image") || c.includes("pic")) return "Photos";
-            if (c.includes("video") || c.includes("motion") || c.includes("film") || c.includes("edit")) return "Videos";
-            return cat || "Website";
+            if (c.includes("blender") || c.includes("3d")) return "Blender 3D";
+            if (c.includes("social")) return "Social Media";
+            if (c.includes("ai")) return "AI Filmmaking";
+            if (c.includes("motion")) return "Motion Graphics";
+            if (c.includes("video") || c.includes("film") || c.includes("edit")) return "Video Editing";
+            if (c.includes("design") || c.includes("poster") || c.includes("ui") || c.includes("graphic") || c.includes("photo")) return "Motion Graphics";
+            return cat || "Video Editing";
           };
           const mapped = data.map((p) => ({
             id: p.id,
-            image: p.image_url || `https://picsum.photos/seed/${p.id}/800/600?grayscale`,
+            image: p.image_url || `/portfolio-placeholders/video-editing.png`,
             text: p.title,
             category: normalizeCategory(p.category),
             description: p.description,
@@ -278,11 +294,11 @@ export default function ProjectsPage() {
           }));
           setAllFull(mapped);
         } else {
-          setAllFull([]);
+          setAllFull(PLACEHOLDER_WORKS);
         }
       })
       .catch(() => {
-        setAllFull([]);
+        setAllFull(PLACEHOLDER_WORKS);
       });
   }, []);
 
@@ -297,7 +313,7 @@ export default function ProjectsPage() {
       : allFull.filter(p => (p.category || "").toLowerCase() === activeCategory.toLowerCase());
     const display = filtered;
     setFilteredFull(display);
-    setItems(display.map(p => ({ image: p.image, text: p.text })));
+    setItems(display.map((p) => ({ image: p.image, text: p.text, category: p.category })));
     setSpinRequest({ index: 0, timestamp: Date.now() });
   }, [allFull, activeCategory]);
 
@@ -311,10 +327,13 @@ export default function ProjectsPage() {
     const item = pool[idx];
     if (item.id) {
       router.push(`/project/${item.id}`);
+      return;
     }
+    setActiveIndex(idx);
+    setShowShowcase(true);
   }, [filteredFull, allFull, router]);
 
-  const categories = ["ALL", "WEBSITE", "DESIGNS", "PHOTOS", "VIDEOS"];
+  const categories = ["ALL", "VIDEO EDITING", "MOTION GRAPHICS", "AI FILMMAKING", "BLENDER 3D", "SOCIAL MEDIA"];
 
   return (
     <>
@@ -347,7 +366,7 @@ export default function ProjectsPage() {
 
         {/* Heading — desktop only */}
         <div className="hidden md:block absolute top-0 left-0 px-6 md:px-20 pt-24 md:pt-28 pointer-events-none z-20">
-          <p className="font-sans text-[10px] text-[#ff6b1a] tracking-[0.5em] uppercase mb-2 md:mb-3 font-medium">
+          <p className="font-sans text-[10px] text-[#F26B38] tracking-[0.5em] uppercase mb-2 md:mb-3 font-medium">
             Creative
           </p>
           <h1
@@ -361,7 +380,7 @@ export default function ProjectsPage() {
         {/* Mobile: section title in top nav area */}
         <div className="md:hidden absolute top-0 left-0 right-0 px-6 pt-20 pointer-events-none z-20 flex items-center justify-between">
           <div>
-            <p className="text-[9px] text-[#ff6b1a] tracking-[0.4em] uppercase font-medium">Creative</p>
+            <p className="text-[9px] text-[#F26B38] tracking-[0.4em] uppercase font-medium">Creative</p>
             <p className="text-white font-black tracking-tighter text-2xl leading-none">
               {activeCategory === "ALL" ? "Archive." : activeCategory.charAt(0) + activeCategory.slice(1).toLowerCase()}
             </p>
@@ -374,30 +393,30 @@ export default function ProjectsPage() {
             <button
               key={cat}
               onClick={() => handleCategoryClick(cat)}
-              className={`text-[11px] uppercase tracking-[0.2em] font-bold transition-all duration-300 relative ${activeCategory === cat ? "text-[#ff6b1a]" : "text-white/40 hover:text-white"}`}
+              className={`text-[11px] uppercase tracking-[0.2em] font-bold transition-all duration-300 relative ${activeCategory === cat ? "text-[#F26B38]" : "text-white/40 hover:text-white"}`}
             >
               {cat}
               {activeCategory === cat && (
-                <motion.div layoutId="activeFilter" className="absolute -bottom-2 left-0 right-0 h-0.5 bg-[#ff6b1a]" />
+                <motion.div layoutId="activeFilter" className="absolute -bottom-2 left-0 right-0 h-0.5 bg-[#F26B38]" />
               )}
             </button>
           ))}
         </div>
 
         {/* Mobile filters — bottom */}
-        <div className="md:hidden absolute bottom-[6vh] left-0 right-0 z-30 flex justify-center gap-4 px-4 pointer-events-auto">
-          <div className="flex items-center gap-3 bg-black/60 backdrop-blur-md border border-white/10 rounded-full px-5 py-2.5">
+        <div className="md:hidden absolute bottom-[6vh] left-0 right-0 z-30 flex justify-start overflow-x-auto px-4 pointer-events-auto">
+          <div className="flex w-max min-w-max items-center gap-3 bg-black/60 backdrop-blur-md border border-white/10 rounded-full px-5 py-2.5">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => handleCategoryClick(cat)}
                 className={`text-[9px] uppercase tracking-[0.15em] font-bold transition-all duration-200 relative ${
-                  activeCategory === cat ? "text-[#ff6b1a]" : "text-white/35 hover:text-white"
+                  activeCategory === cat ? "text-[#F26B38]" : "text-white/35 hover:text-white"
                 }`}
               >
                 {cat}
                 {activeCategory === cat && (
-                  <motion.div layoutId="activeFilterMobile" className="absolute -bottom-1.5 left-0 right-0 h-[1.5px] bg-[#ff6b1a]" />
+                  <motion.div layoutId="activeFilterMobile" className="absolute -bottom-1.5 left-0 right-0 h-[1.5px] bg-[#F26B38]" />
                 )}
               </button>
             ))}
@@ -414,7 +433,7 @@ export default function ProjectsPage() {
             <motion.div
               animate={{ x: [-8, 8, -8] }}
               transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-              className="w-1.5 h-1.5 bg-[#ff6b1a] rounded-full"
+              className="w-1.5 h-1.5 bg-[#F26B38] rounded-full"
             />
           </div>
 
@@ -424,7 +443,16 @@ export default function ProjectsPage() {
         </div>
       </section>
 
-
+      <AnimatePresence>
+        {showShowcase && filteredFull?.length > 0 && (
+          <ProjectShowcase
+            key={`${activeCategory}-${activeIndex}`}
+            items={filteredFull}
+            startIdx={activeIndex}
+            onClose={() => setShowShowcase(false)}
+          />
+        )}
+      </AnimatePresence>
     </>
   );
 }

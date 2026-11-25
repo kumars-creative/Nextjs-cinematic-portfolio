@@ -12,7 +12,7 @@ export default function NotFound() {
       className="min-h-screen flex flex-col justify-center items-center bg-[#080808] px-10"
       aria-labelledby="not-found-heading"
     >
-      <p className="text-[11px] text-[#ff6b1a] tracking-[0.45em] uppercase mb-6 font-medium">
+      <p className="text-[11px] text-[#F26B38] tracking-[0.45em] uppercase mb-6 font-medium">
         404
       </p>
 
@@ -31,7 +31,7 @@ export default function NotFound() {
 
       <Link
         href="/"
-        className="flex items-center gap-3 px-8 py-3 border border-[#ff6b1a]/50 text-[#ff6b1a] text-[11px] uppercase tracking-[0.32em] rounded-full hover:bg-[#ff6b1a] hover:text-black transition-all duration-500 group"
+        className="flex items-center gap-3 px-8 py-3 border border-[#F26B38]/50 text-[#F26B38] text-[11px] uppercase tracking-[0.32em] rounded-full hover:bg-[#F26B38] hover:text-black transition-all duration-500 group"
       >
         <svg
           width="14" height="14" viewBox="0 0 14 14" fill="none"

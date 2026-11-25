@@ -16,7 +16,7 @@ const round = (v, precision = 3) => parseFloat(v.toFixed(precision));
 const adjust = (v, fMin, fMax, tMin, tMax) => round(tMin + ((tMax - tMin) * (v - fMin)) / (fMax - fMin));
 
 const ProfileCardComponent = ({
-  avatarUrl = '/photo/about me.webp',
+  avatarUrl = '/portfolio-placeholders/ai-filmmaking.png',
   iconUrl = '',
   grainUrl = '',
   innerGradient,
@@ -28,9 +28,9 @@ const ProfileCardComponent = ({
   enableMobileTilt = false,
   mobileTiltSensitivity = 5,
   miniAvatarUrl,
-  name = 'Sarang',
+  name = 'Kumar S.',
   title = 'Creative Developer & Designer',
-  handle = 'sarang',
+  handle = 'kumar-s',
   status = 'Available for Hire',
   contactText = 'Hire Me',
   showUserInfo = true,
@@ -294,7 +294,7 @@ const ProfileCardComponent = ({
       '--icon': iconUrl ? `url(${iconUrl})` : 'none',
       '--grain': grainUrl ? `url(${grainUrl})` : 'none',
       '--inner-gradient': innerGradient ?? DEFAULT_INNER_GRADIENT,
-      '--behind-glow-color': behindGlowColor ?? 'rgba(255, 107, 26, 0.4)', // Use Sarang's brand orange color as backing glow!
+      '--behind-glow-color': behindGlowColor ?? 'rgba(242, 107, 56, 0.4)',
       '--behind-glow-size': behindGlowSize ?? '50%'
     }),
     [iconUrl, grainUrl, innerGradient, behindGlowColor, behindGlowSize]
