@@ -15,7 +15,6 @@ import About from "../components/About";
 import Work from "../components/Work";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
-import SeoContent from "../components/SeoContent";
 
 export default function Home() {
   const blurWrapRef = useRef(null);
@@ -52,9 +51,6 @@ export default function Home() {
 
   return (
     <main>
-      {/* SEO-crawlable structured content (visually hidden) - Forced HMR refresh */}
-      <SeoContent />
-
       {/* grain */}
       <div className="grain-overlay" />
 

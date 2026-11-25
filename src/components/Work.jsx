@@ -10,10 +10,10 @@ gsap.registerPlugin(ScrollTrigger);
 const CATEGORIES = [
   {
     num: "01",
-    label: "Website",
-    title: "Web Design & Development",
+    label: "Video Editing",
+    title: "Video Editing",
     description:
-      "High-performance websites, Shopify stores, and Next.js web apps — pixel-perfect and built for conversion.",
+      "Editorial storytelling shaped through pacing, color, sound, and a cinematic eye.",
     icon: (
       <svg viewBox="0 0 40 40" fill="none" className="w-8 h-8 opacity-20 group-hover:opacity-60 transition-opacity duration-500">
         <rect x="4" y="8" width="32" height="24" rx="3" stroke="currentColor" strokeWidth="1.5"/>
@@ -23,14 +23,14 @@ const CATEGORIES = [
         <circle cx="17" cy="11" r="1.2" fill="currentColor"/>
       </svg>
     ),
-    href: "/projects?cat=website",
+    href: "/projects?cat=video",
   },
   {
     num: "02",
-    label: "Photo / Poster Design",
-    title: "Visual & Graphic Design",
+    label: "Motion Graphics",
+    title: "Motion Graphics",
     description:
-      "Brand identities, social media creatives, posters, and photo edits that stop the scroll and tell the story.",
+      "Graphic systems and visual rhythms designed to bring ideas into motion.",
     icon: (
       <svg viewBox="0 0 40 40" fill="none" className="w-8 h-8 opacity-20 group-hover:opacity-60 transition-opacity duration-500">
         <rect x="5" y="5" width="30" height="30" rx="3" stroke="currentColor" strokeWidth="1.5"/>
@@ -38,14 +38,14 @@ const CATEGORIES = [
         <path d="M5 28l9-8 6 6 5-5 10 9" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
       </svg>
     ),
-    href: "/projects?cat=design",
+    href: "/projects?cat=motion",
   },
   {
     num: "03",
-    label: "Video",
-    title: "Video & Motion Editing",
+    label: "AI Filmmaking",
+    title: "AI Filmmaking",
     description:
-      "Cinematic reels, brand films, short-form content, and motion graphics that captivate and convert audiences.",
+      "Explorations in image-making, atmosphere, and the emerging language of AI-assisted film.",
     icon: (
       <svg viewBox="0 0 40 40" fill="none" className="w-8 h-8 opacity-20 group-hover:opacity-60 transition-opacity duration-500">
         <rect x="4" y="9" width="24" height="22" rx="3" stroke="currentColor" strokeWidth="1.5"/>
@@ -53,7 +53,34 @@ const CATEGORIES = [
         <path d="M13 16l7 4-7 4V16z" fill="currentColor" opacity="0.5"/>
       </svg>
     ),
-    href: "/projects?cat=video",
+    href: "/projects?cat=ai",
+  },
+  {
+    num: "04",
+    label: "Blender 3D",
+    title: "Blender 3D",
+    description: "Three-dimensional forms, materials, and light studies built in Blender.",
+    icon: (
+      <svg viewBox="0 0 40 40" fill="none" className="w-8 h-8 opacity-20 group-hover:opacity-60 transition-opacity duration-500">
+        <path d="M20 5 34 13v14L20 35 6 27V13L20 5Z" stroke="currentColor" strokeWidth="1.5" />
+        <path d="m6 13 14 8 14-8M20 21v14" stroke="currentColor" strokeWidth="1.5" />
+      </svg>
+    ),
+    href: "/projects?cat=blender",
+  },
+  {
+    num: "05",
+    label: "Social Media",
+    title: "Social Media Storytelling",
+    description: "Short-form visual stories and art direction made for the rhythm of social platforms.",
+    icon: (
+      <svg viewBox="0 0 40 40" fill="none" className="w-8 h-8 opacity-20 group-hover:opacity-60 transition-opacity duration-500">
+        <rect x="7" y="7" width="26" height="26" rx="7" stroke="currentColor" strokeWidth="1.5" />
+        <circle cx="20" cy="20" r="6" stroke="currentColor" strokeWidth="1.5" />
+        <circle cx="28" cy="12" r="1.5" fill="currentColor" />
+      </svg>
+    ),
+    href: "/projects?cat=social",
   },
 ];
 
@@ -96,7 +123,7 @@ export default function Work() {
 
         {/* Header and Filters */}
         <div className="mb-14 md:mb-20">
-          <p className="font-sans text-[10px] text-[#ff6b1a] tracking-[0.5em] uppercase mb-4 font-medium">
+          <p className="font-sans text-[10px] text-[#F26B38] tracking-[0.5em] uppercase mb-4 font-medium">
             {SECTION.label}
           </p>
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
@@ -107,12 +134,12 @@ export default function Work() {
               {SECTION.heading}
             </h2>
 
-            {/* Category pills — decorative only */}
+            {/* Browse the archive by creative discipline */}
             <div className="flex flex-wrap gap-2 lg:pb-2">
-              {["Website", "Photo / Poster Design", "Video"].map((cat) => (
+              {["Video Editing", "Motion Graphics", "AI Filmmaking", "Blender 3D", "Social Media"].map((cat) => (
                 <Link
                   key={cat}
-                  href={`/projects${cat !== "All" ? `?cat=${cat.toLowerCase().split(" ")[0]}` : ""}`}
+                  href={`/projects?cat=${cat.toLowerCase().split(" ")[0]}`}
                   className="px-4 py-2 rounded-full text-[10px] md:text-xs font-medium tracking-widest uppercase transition-all duration-300 bg-transparent text-white/40 border border-white/10 hover:text-white hover:border-white/30"
                 >
                   {cat}
@@ -122,7 +149,7 @@ export default function Work() {
           </div>
         </div>
 
-        {/* 3 Category Cards */}
+        {/* Creative discipline cards */}
         <div className="flex flex-col">
           {CATEGORIES.map((cat, i) => (
             <Link
@@ -131,18 +158,18 @@ export default function Work() {
               className="work-item group relative flex items-start gap-8 py-10 md:py-14 border-b border-white/8 hover:border-white/20 transition-all duration-500"
             >
               {/* Left orange accent bar */}
-              <div className="absolute left-0 top-0 bottom-0 w-px bg-[#ff6b1a] origin-top scale-y-0 group-hover:scale-y-100 transition-transform duration-500 ease-out" />
+              <div className="absolute left-0 top-0 bottom-0 w-px bg-[#F26B38] origin-top scale-y-0 group-hover:scale-y-100 transition-transform duration-500 ease-out" />
 
               {/* Number */}
               <div className="pl-3 shrink-0 w-8 pt-1">
-                <span className="font-mono text-[10px] text-white/20 group-hover:text-[#ff6b1a] tracking-widest transition-colors duration-300">
+                <span className="font-mono text-[10px] text-white/20 group-hover:text-[#F26B38] tracking-widest transition-colors duration-300">
                   {cat.num}
                 </span>
               </div>
 
               {/* Content */}
               <div className="flex-1 min-w-0 translate-x-0 group-hover:translate-x-1.5 transition-transform duration-500 ease-out">
-                <p className="font-sans text-[10px] text-white/30 group-hover:text-[#ff6b1a]/70 tracking-[0.4em] uppercase font-light mb-2 transition-colors duration-300">
+                <p className="font-sans text-[10px] text-white/30 group-hover:text-[#F26B38]/70 tracking-[0.4em] uppercase font-light mb-2 transition-colors duration-300">
                   {cat.label}
                 </p>
                 <h3 className="font-sans text-xl md:text-2xl font-black text-white tracking-tighter mb-3 group-hover:text-white transition-colors duration-300">
@@ -172,19 +199,19 @@ export default function Work() {
             href="/projects"
             className="work-item group relative flex items-center gap-8 py-10 md:py-14 border-b border-white/8 hover:border-white/20 transition-all duration-500"
           >
-            <div className="absolute left-0 top-0 bottom-0 w-px bg-[#ff6b1a] origin-top scale-y-0 group-hover:scale-y-100 transition-transform duration-500 ease-out" />
+            <div className="absolute left-0 top-0 bottom-0 w-px bg-[#F26B38] origin-top scale-y-0 group-hover:scale-y-100 transition-transform duration-500 ease-out" />
             <div className="pl-3 shrink-0 w-8">
-              <span className="font-mono text-[10px] text-white/20 group-hover:text-[#ff6b1a] tracking-widest transition-colors duration-300">→</span>
+              <span className="font-mono text-[10px] text-white/20 group-hover:text-[#F26B38] tracking-widest transition-colors duration-300">→</span>
             </div>
             <div className="flex-1 translate-x-0 group-hover:translate-x-1.5 transition-transform duration-500 ease-out">
-              <p className="font-sans text-[10px] text-white/30 group-hover:text-[#ff6b1a]/70 tracking-[0.4em] uppercase font-light mb-2 transition-colors duration-300">
+              <p className="font-sans text-[10px] text-white/30 group-hover:text-[#F26B38]/70 tracking-[0.4em] uppercase font-light mb-2 transition-colors duration-300">
                 Full Portfolio
               </p>
               <h3 className="font-sans text-xl md:text-2xl font-black text-white tracking-tighter group-hover:text-white transition-colors duration-300">
                 View All Projects
               </h3>
             </div>
-            <div className="hidden md:flex items-center gap-2 text-white/20 group-hover:text-[#ff6b1a] transition-colors duration-300 pr-2">
+            <div className="hidden md:flex items-center gap-2 text-white/20 group-hover:text-[#F26B38] transition-colors duration-300 pr-2">
               <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
                 <path d="M6 14h16M16 8l6 6-6 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>

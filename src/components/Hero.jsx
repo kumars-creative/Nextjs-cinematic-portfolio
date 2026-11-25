@@ -44,58 +44,68 @@ export default function Hero() {
   return (
     <section
       ref={ref}
-      className="relative min-h-[135vh] flex flex-col justify-center px-10 md:px-24 overflow-hidden"
+      aria-labelledby="hero-title"
+      className="relative flex min-h-[112svh] items-center overflow-hidden px-6 pb-16 pt-28 sm:px-10 md:px-16 lg:px-24"
     >
-      <div className="relative z-10 max-w-5xl">
-        <p className="hero-label text-[10px] md:text-xs text-[#ff6b1a] tracking-[0.2em] uppercase font-bold mb-6">
-          Digital Experience Designer
-        </p>
-
-        <h1
-          className="font-black tracking-tighter leading-[0.75] mb-12 flex flex-col relative z-10 hero-clamp-text"
-        >
-          <span className="hero-line block ghost z-0">Hey, I'm</span>
-          <span className="block text-white -mt-2 md:-mt-6 z-10 hero-perspective">
-            {"Sarang.".split("").map((char, index) => (
+      <div className="relative z-20 w-full max-w-[1700px]">
+        <div className="mb-7 md:mb-9">
+          <p
+            aria-label="Kumar S."
+            className="mb-3 flex text-[clamp(1.65rem,3.2vw,3.5rem)] font-black uppercase leading-none tracking-[0.08em] text-white"
+          >
+            {"KUMAR ".split("").map((char, index) => (
               <span key={index} className="hero-letter inline-block">
                 {char === " " ? "\u00A0" : char}
               </span>
             ))}
+            <span className="text-[#F26B38]">
+              {"S.".split("").map((char, index) => (
+                <span key={index} className="hero-letter inline-block">
+                  {char}
+                </span>
+              ))}
+            </span>
+          </p>
+          <p className="hero-label text-[10px] font-semibold uppercase tracking-[0.34em] text-white/60 sm:text-xs">
+            Creative Director
+          </p>
+        </div>
+
+        <h1
+          id="hero-title"
+          className="mb-7 flex max-w-[1020px] flex-col font-black uppercase leading-[0.88] tracking-[-0.055em] text-white [font-size:clamp(2.6rem,4.3vw,6rem)]"
+        >
+          <span className="hero-line block">I CREATE</span>
+          <span className="hero-line block">VISUAL EXPERIENCES</span>
+          <span className="hero-line block">
+            THAT <span className="text-[#F26B38]">INSPIRE.</span>
           </span>
         </h1>
 
-        <div className="max-w-lg hero-sub flex flex-col gap-6">
-          <BlurText
-            text="I create *immersive* digital experiences that blend design, motion, and technology into something visually *memorable* and smooth to use. My work focuses on building websites and visuals with strong *atmosphere*, *detail*, and *storytelling*."
-            delay={30}
-            animateBy="words"
-            direction="bottom"
-            stepDuration={0.22}
-            className="text-base md:text-[17px] text-white/60 font-medium leading-[1.6]"
-          />
-          <BlurText
-            text="I mainly work with React, Shopify, Flutter, editing, and visual design, combining development with *cinematic* styling and *modern* user experiences."
-            delay={22}
-            animateBy="words"
-            direction="bottom"
-            stepDuration={0.2}
-            className="text-xs md:text-sm text-white/40 font-light leading-relaxed"
-          />
-          <BlurText
-            text="So far, I’ve completed *6* *websites*, edited *75+* *videos*, and created *500+* *photo* *edits* and visual concepts. Currently, I’m focusing on a *job* *app* and a *billing* *app* while continuing to explore *creative* *development* and *interactive* *design*."
-            delay={15}
-            animateBy="words"
-            direction="bottom"
-            stepDuration={0.18}
-            className="text-xs md:text-sm text-white/30 font-light leading-relaxed"
-          />
-
-          <p className="mt-8 text-[10px] text-white/40 tracking-[0.4em] uppercase font-medium">
-            Explore ↓
+        <div className="hero-sub max-w-[620px]">
+          <p className="max-w-[38rem] text-sm font-medium leading-relaxed text-white/65 sm:text-base md:text-lg">
+            Creative storytelling, <span className="text-[#F26B38]">motion design</span>, <span className="text-[#F26B38]">AI filmmaking</span> and visual production.
           </p>
+          <div className="mt-7 flex flex-wrap items-center gap-3 sm:gap-4">
+            <a
+              href="#work-section"
+              className="inline-flex min-h-12 items-center justify-center rounded-full bg-[#F26B38] px-6 text-[10px] font-bold uppercase tracking-[0.17em] text-black transition-colors duration-300 hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#F26B38] sm:px-7 sm:text-xs"
+            >
+              Explore My Work
+            </a>
+            <a
+              href="/Kumar_S_Creative_Producer-Resume.pdf"
+              download="Kumar_S_Resume.pdf"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-[#F26B38]/60 px-6 text-[10px] font-bold uppercase tracking-[0.17em] text-[#F26B38] transition-colors duration-300 hover:bg-[#F26B38] hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#F26B38] sm:px-7 sm:text-xs"
+            >
+              Download Resume
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M12 3v12m-5-5 5 5 5-5M5 21h14" />
+              </svg>
+            </a>
+          </div>
         </div>
       </div>
-
     </section>
   );
 }

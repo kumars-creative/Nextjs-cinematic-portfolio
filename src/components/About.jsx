@@ -2,9 +2,8 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Image from "next/image";
 import BlurText from "./BlurText";
-import { SECTION, HEADING, BIO, RESUME_URL, TECH, CREATIVE, EXPERIENCE } from "@/app/about/content";
+import { SECTION, HEADING, BIO, TECH, CREATIVE, EXPERIENCE } from "@/app/about/content";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -60,13 +59,7 @@ export default function About({ standalone = false }) {
     >
       {standalone && (
         <div className="about-img absolute inset-0 z-0">
-          <Image
-            src="/photo/about me.webp"
-            alt="Sarang"
-            fill
-            className="object-cover object-center"
-            priority
-          />
+          <div className="absolute inset-0 bg-[url('/portfolio-placeholders/ai-filmmaking.png')] bg-cover bg-center opacity-40" role="img" aria-label="Temporary cinematic visual study" />
           <div className="absolute inset-0 bg-gradient-to-l from-[#080808] via-[#080808]/80 to-[#080808]/10" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#080808] via-transparent to-[#080808]/60" />
         </div>
@@ -76,7 +69,7 @@ export default function About({ standalone = false }) {
 
         {/* Left Bio */}
         <div className={`w-full lg:w-[55%] max-w-2xl flex flex-col ${standalone ? "ml-auto lg:pr-10 text-right items-end" : "mr-auto text-left items-start"}`}>
-          <p className="about-label text-[10px] text-[#ff6b1a] tracking-[0.5em] uppercase mb-6 font-medium">
+          <p className="about-label text-[10px] text-[#F26B38] tracking-[0.5em] uppercase mb-6 font-medium">
             {SECTION.label}
           </p>
 
@@ -101,16 +94,24 @@ export default function About({ standalone = false }) {
             />
           ))}
 
-          <div className={`about-p mt-6 ${standalone ? "flex justify-end" : "flex justify-start"}`}>
+          <div className={`about-p mt-6 flex flex-wrap items-center gap-3 ${standalone ? "justify-end" : "justify-start"}`}>
             <a
-              href={RESUME_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 border border-[#ff6b1a]/30 text-[#ff6b1a] text-xs font-bold uppercase tracking-widest rounded-full hover:bg-[#ff6b1a] hover:text-black transition-colors duration-300"
+              href="/contact"
+              className="inline-flex items-center gap-2 rounded-full border border-[#F26B38]/30 px-6 py-3 text-xs font-bold uppercase tracking-widest text-[#F26B38] transition-colors duration-300 hover:bg-[#F26B38] hover:text-black"
             >
-              View Resume
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              Start a conversation
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+            <a
+              href="/Kumar_S_Creative_Producer-Resume.pdf"
+              download="Kumar_S_Resume.pdf"
+              className="inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-3 text-xs font-bold uppercase tracking-widest text-white/75 transition-colors duration-300 hover:border-[#F26B38] hover:text-[#F26B38] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#F26B38]"
+            >
+              Download Resume
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M12 3v12m-5-5 5 5 5-5M5 21h14"/>
               </svg>
             </a>
           </div>
@@ -123,11 +124,11 @@ export default function About({ standalone = false }) {
           <div className="flex flex-col gap-10 w-full">
             <div className="w-full">
               <p className={`about-p text-[10px] tracking-[0.4em] uppercase mb-6 ${standalone ? "text-left" : "text-right"}`}>
-                <span className="border-b border-white/30 pb-2 inline-block text-white/50">Tech I Work With</span>
+                <span className="border-b border-white/30 pb-2 inline-block text-white/50">Creative Disciplines</span>
               </p>
               <div className={`flex gap-2 flex-wrap ${standalone ? "justify-start" : "justify-end"}`}>
                 {TECH.map((s) => (
-                  <span key={s.name} className="group about-skill px-4 py-2 flex items-center gap-2 border border-white/12 rounded-full text-[10px] text-white/35 tracking-widest uppercase transition-colors duration-300 hover:bg-white hover:text-[#ff6b1a] hover:border-white cursor-default">
+                  <span key={s.name} className="group about-skill px-4 py-2 flex items-center gap-2 border border-white/12 rounded-full text-[10px] text-white/35 tracking-widest uppercase transition-colors duration-300 hover:bg-white hover:text-[#F26B38] hover:border-white cursor-default">
                     <s.icon className="w-3 h-3 transition-all duration-300 fill-transparent stroke-current stroke-[1.5px] group-hover:fill-current group-hover:stroke-transparent" />
                     {s.name}
                   </span>
@@ -137,11 +138,11 @@ export default function About({ standalone = false }) {
 
             <div className="w-full">
               <p className={`about-p text-[10px] tracking-[0.4em] uppercase mb-6 ${standalone ? "text-left" : "text-right"}`}>
-                <span className="border-b border-white/30 pb-2 inline-block text-white/50">Creative Tools</span>
+                <span className="border-b border-white/30 pb-2 inline-block text-white/50">Selected Capabilities</span>
               </p>
               <div className={`flex gap-2 flex-wrap ${standalone ? "justify-start" : "justify-end"}`}>
                 {CREATIVE.map((s) => (
-                  <span key={s.name} className="group about-skill px-4 py-2 flex items-center gap-2 border border-white/12 rounded-full text-[10px] text-white/35 tracking-widest uppercase transition-colors duration-300 hover:bg-white hover:text-[#ff6b1a] hover:border-white cursor-default">
+                  <span key={s.name} className="group about-skill px-4 py-2 flex items-center gap-2 border border-white/12 rounded-full text-[10px] text-white/35 tracking-widest uppercase transition-colors duration-300 hover:bg-white hover:text-[#F26B38] hover:border-white cursor-default">
                     <s.icon className="w-3 h-3 transition-all duration-300 fill-transparent stroke-current stroke-[1.5px] group-hover:fill-current group-hover:stroke-transparent" />
                     {s.name}
                   </span>

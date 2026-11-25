@@ -9,8 +9,7 @@ const SOCIAL_FIELDS = [
   { key: 'youtube',    label: 'YouTube',    placeholder: 'https://youtube.com/@yourchannel',   icon: YoutubeIcon },
   { key: 'behance',    label: 'Behance',    placeholder: 'https://behance.net/yourprofile',    icon: BehanceIcon },
   { key: 'dribbble',   label: 'Dribbble',   placeholder: 'https://dribbble.com/yourhandle',   icon: DribbbleIcon },
-  { key: 'whatsapp',   label: 'WhatsApp',   placeholder: 'https://wa.me/919999999999',        icon: WhatsappIcon },
-];
+ ];
 
 export default function LinksPage() {
   const [links, setLinks]   = useState({});
@@ -88,7 +87,7 @@ export default function LinksPage() {
                   href={links[key]}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="shrink-0 text-white/20 hover:text-[#ff6b1a] transition-colors"
+                  className="shrink-0 text-white/20 hover:text-[#F26B38] transition-colors"
                   title="Open link"
                 >
                   <ExternalIcon />
@@ -100,7 +99,7 @@ export default function LinksPage() {
                 className={`shrink-0 px-3 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-widest transition-all ${
                   saved[key]
                     ? 'bg-green-500/10 text-green-400 border border-green-500/20'
-                    : 'bg-white/5 text-white/40 hover:bg-[#ff6b1a]/10 hover:text-[#ff6b1a] border border-white/5 hover:border-[#ff6b1a]/20'
+                    : 'bg-white/5 text-white/40 hover:bg-[#F26B38]/10 hover:text-[#F26B38] border border-white/5 hover:border-[#F26B38]/20'
                 }`}
               >
                 {saved[key] ? '✓ Saved' : saving[key] ? '...' : 'Save'}
@@ -116,7 +115,7 @@ export default function LinksPage() {
               className={`px-6 py-3 rounded-xl text-sm font-bold uppercase tracking-widest transition-all ${
                 saved._all
                   ? 'bg-green-500/10 text-green-400 border border-green-500/20'
-                  : 'bg-[#ff6b1a] text-black hover:opacity-90'
+                  : 'bg-[#F26B38] text-black hover:opacity-90'
               }`}
             >
               {saved._all ? '✓ All Saved' : saving._all ? 'Saving…' : 'Save All Links'}

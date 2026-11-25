@@ -56,11 +56,11 @@ export default function OpenSourceView() {
   return (
     <main className="min-h-screen pt-32 pb-20 px-6 md:px-20 flex flex-col items-center justify-center relative overflow-hidden">
       <Cursor />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#ff6b1a]/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#F26B38]/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="relative z-10 max-w-3xl w-full text-center flex flex-col items-center">
         <div className="w-20 h-20 bg-white/5 border border-white/10 rounded-full flex items-center justify-center mb-8">
-          <FiGithub size={40} className="text-[#ff6b1a]" />
+          <FiGithub size={40} className="text-[#F26B38]" />
         </div>
 
         <h1 className="text-white text-5xl md:text-7xl font-black tracking-tighter mb-6">
@@ -99,7 +99,7 @@ export default function OpenSourceView() {
               <FiGitBranch size={13} />
               <span className="text-sm font-bold text-white">{ghRepo ? forks.toLocaleString() : <span className="text-white/20">—</span>}</span>
             </div>
-            <FiExternalLink size={13} className="text-white/20 group-hover:text-[#ff6b1a] transition-colors" />
+            <FiExternalLink size={13} className="text-white/20 group-hover:text-[#F26B38] transition-colors" />
           </div>
         </a>
 
@@ -111,7 +111,7 @@ export default function OpenSourceView() {
             { icon: FiUsers,     label: "Site Visits",  value: totalVisits, suffix: "+" },
           ].map(({ icon: Icon, label, value, suffix }) => (
             <div key={label} className="flex flex-col items-center gap-1.5 py-5 px-3 bg-white/[0.03] border border-white/8 rounded-2xl">
-              <Icon size={14} className="text-[#ff6b1a] mb-1" />
+              <Icon size={14} className="text-[#F26B38] mb-1" />
               <span className="text-white font-black text-2xl md:text-3xl tracking-tighter">
                 {stats ? <CountUp target={value} suffix={suffix} /> : <span className="text-white/20 animate-pulse">—</span>}
               </span>
@@ -148,7 +148,7 @@ export default function OpenSourceView() {
           <TrackedLink
             href="/open-source/docs"
             label="Open Source Docs"
-            className="w-full sm:w-auto px-8 py-4 bg-[#ff6b1a]/10 border border-[#ff6b1a]/20 text-[#ff6b1a] font-bold text-[11px] uppercase tracking-[0.2em] rounded-full hover:bg-[#ff6b1a]/20 transition-colors duration-300 flex items-center justify-center gap-3"
+            className="w-full sm:w-auto px-8 py-4 bg-[#F26B38]/10 border border-[#F26B38]/20 text-[#F26B38] font-bold text-[11px] uppercase tracking-[0.2em] rounded-full hover:bg-[#F26B38]/20 transition-colors duration-300 flex items-center justify-center gap-3"
           >
             <FiBook size={16} />
             Documentation
